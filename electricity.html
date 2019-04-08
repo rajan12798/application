@@ -1,0 +1,208 @@
+<html>
+<head>
+     <script>
+              var amt1,tmt,id,name,prev,pres, cunit,amt,msg,discont,cst,dc,amout;
+           function calculate( )
+             {
+     
+                        id=document.getElementById("cid").value;
+                     name=document.getElementById("cname").value;
+                    prev=document.getElementById("prevunit").value;
+                   pres=document.getElementById("presunit").value;
+                  document.getElementById("next").style.display='block';
+                     cunit=pres-prev;
+                 if(cunit<100)
+                  {
+                      document.getElementById("conunit").value=cunit;
+                       msg="Rs 6/unit";
+                      document.getElementById("elecrate").value=msg;
+                             amt=cunit*6;  amout=amt;
+                      document.getElementById("amount").value=amt;
+                      cst=0;document.getElementById("cgs").value=0;
+                     dc=0;document.getElementById("edc").value=0;       
+                     amt1=amt;document.getElementById("tamount").value=amt;
+                      tmt=amt;document.getElementById("pamt").value=amt; 
+                         discont=0;document.getElementById("dis").value=0;
+                   }
+                 if(cunit>=100 && cunit<200)
+                  {   
+                      document.getElementById("conunit").value=cunit;
+                       msg="Rs 7/unit";
+                      document.getElementById("elecrate").value=msg;
+                             amt=cunit*7;amout=amt;
+                      document.getElementById("amount").value=amt;
+                      amt=amt+(amt*0.5/100);
+                      cst=(amt*0.5/100);document.getElementById("cgs").value=(amt*0.5/100);
+                     dc=0;document.getElementById("edc").value=0;       
+                     amt1=amt;document.getElementById("tamount").value=amt;
+                     if(amt<=1000)
+                     {   
+                         discont=20;document.getElementById("dis").value=20;
+                         tmt=amt-20;document.getElementById("pamt").value=amt-20;         
+                     }
+
+                     if(amt>1000 && amt<=2000 )
+                     {   
+                         discont=(amt*1.5/100);document.getElementById("dis").value=(amt*1.5/100);
+                         tmt=amt-((amt+600)*1.5/100); document.getElementById("pamt").value=amt-((amt+600)*1.5/100);         
+                     }              
+              }
+                 if(cunit>=200)
+                  {   
+                      document.getElementById("conunit").value=cunit;
+                       msg="Rs 8/unit";
+                      document.getElementById("elecrate").value=msg;
+                             amt=cunit*8; amout=amt;
+                      document.getElementById("amount").value=amt;
+                      amt=amt+(amt*2.5/100);
+                      cst=(amt*2.5/100);document.getElementById("cgs").value=(amt*2.5/100);
+                      dc=600;document.getElementById("edc").value=600;       
+                     amt1=amt+600;document.getElementById("tamount").value=amt+600;
+                     if(amt+600>1000 && amt+600<=2000 )
+                     {   
+                         discont=((amt+600)*1.5/100); document.getElementById("dis").value=((amt+600)*1.5/100);
+                         tmt=(amt+600)-((amt+600)*1.5/100);document.getElementById("pamt").value=(amt+600)-((amt+600)*1.5/100);         
+                     }
+                     if(amt>2000)
+                     {   
+                         discont=((amt+600)*5/100);
+                      document.getElementById("dis").value=((amt+600)*5/100);
+                         tmt=(amt+600)-((amt+600)*5/100);document.getElementById("pamt").value=(amt+600)-((amt+600)*5/100);         
+                     }
+                   }
+                 
+             }
+             
+            function bill()
+            {       var val;
+                        document.getElementById("first").style.display='none';
+                    document.getElementById("second").style.display='block';
+                   document.getElementById("col1").innerHTML=id;
+                    document.getElementById("col2").innerHTML=name;
+                     document.getElementById("col3").innerHTML=prev;
+                   document.getElementById("col4").innerHTML=pres;
+                    document.getElementById("col5").innerHTML=cunit;
+                    document.getElementById("col6").innerHTML=msg;
+                    document.getElementById("col7").innerHTML=amout;
+                    document.getElementById("col8").innerHTML=cst;
+                    document.getElementById("col9").innerHTML=dc;
+                    document.getElementById("col10").innerHTML=amt1;
+                    document.getElementById("col11").innerHTML=discont;
+                    document.getElementById("col12").innerHTML=tmt;
+            }  
+      </script>
+<head>
+<body>
+ <div id="first">
+<div style="display:flex;flex-direction:column;margin-left:100px;">
+    <div style="margin-left:50px;margin-right:50px;height:100px;background:white;border-radius:10px;width:1100px;box-shadow:10px 10px 10px 10px grey;">
+         <img src="C:\Users\home\Pictures\New folder\download.jpg" style="border-radius:100px;height:100px;margin-left:220px;" border=0></img><h1 align="center" style="float:right;margin-right:400px;">Electricity Billing</h1>
+     </div>
+    <div style="margin-left:50px;margin-right:50px;height:auto;background:white;border-radius:10px;width:1100px;box-shadow:10px 10px 10px 10px grey;margin-top:50px;">
+       <table  style="margin-top:30px;margin-left:50px;border-spacing:25px;" >
+           <tr>
+             <td>Coustomer ID</td>
+            <td><input type="text"  size=30  id="cid" style="border-radius:5px;border-color:blue" border=2px></input></td>
+             <td>Coustomer Name</td>
+             <td><input type="text"   id="cname" size=30 style="border-radius:5px;border-color:blue" border=2px></input></td>
+         </tr>
+             <tr>
+             <td ><h id="lblrate">Previous Unit</h></td>
+            <td><input type="text" id="prevunit"  size=30 style="border-radius:5px;border-color:blue" border=2px></input></td>
+             <td>Present Unit</td>
+             <td><input type="text" id="presunit"  size=30 style="border-radius:5px;border-color:blue" border=2px></input></td>
+         </tr>
+              <tr >
+            <td colspan=2  ><input type="button"  onclick=" calculate()" style="border-radius:5px;background:tomato;color:white; height:30px; font-size:20px;border-style:none;margin-left:400px;" border=none value="Show" align="center"></input></td>
+  
+         </tr>
+        </table>
+    </div>
+</div>
+   <div  id="next" style="display:none;margin-left:150px;width:1100px;margin-top:50px;box-shadow:10px 10px 10px 10px grey;border-radius:10px">
+     <form>
+        <table style="margin-left:50px;border-spacing:15px;">
+           <tr>
+                 <td>consume unit</td>
+                 <td><input type="text"  id="conunit" size=10  style="border-radius:5px;border-color:blue" border=2px></input></td>
+                 <td>Rate</td>
+                 <td><input type="text"  id="elecrate" size=10  style="border-radius:5px;border-color:blue" border=2px></input></td>
+
+                 <td>Amount</td>
+                 <td><input type="text"  id="amount" size=10  style="border-radius:5px;border-color:blue" border=2px></input></td>
+           </tr> 
+                   <tr>
+                 <td>CGST</td>
+                 <td><input type="text"  id="cgs" size=10  style="border-radius:5px;border-color:blue" border=2px></input></td>
+                 <td>Electricity Duty Charge</td>
+                 <td><input type="text"  id="edc" size=10  style="border-radius:5px;border-color:blue" border=2px></input></td>
+                 <td>Total Amount</td>
+                 <td><input type="text"  id="tamount" size=10  style="border-radius:5px;border-color:blue" border=2px></input></td>
+           </tr> 
+             <tr>
+                 <td id="discaption">Disscount</td>
+                 <td><input type="text"  id="dis" size=10  style="border-radius:5px;border-color:blue" border=2px></input></td>
+                 <td>Payble Amount</td>
+                 <td><input type="text"  id="pamt" size=10  style="border-radius:5px;border-color:blue" border=2px></input></td>
+
+           </tr>
+           <tr>
+                 <td colspan=3><input type="button"  id="pbutton" size=10   border=2px value="Genrate Bill"  onclick="bill()" style="border-radius:5px;background:tomato;color:white; height:40px; font-size:25px;border-style:none;margin-left:200px;margin-top:50px;"></input></td>
+           </tr>          
+      </table>
+     </form>
+</div>
+</div>
+  <div id="second" style="display:none;margin-left:100px;width:900px;margin-top:50px;height:800px;font-size:30px;">
+  <h2 style="margin-left:400px;margin-top:20px;float:center;"><u> Electricity Bill</u></h2>      
+    <table border=1 style="margin-left:300px;margin-top:20px; margin-bottom:50px;height:500px;font-size:20px;">
+              <tr>
+                <td  width="300px">Coustomer Id</td>
+                <td id="col1" width="300px"></td> 
+                <td width="300px">Coustomer Name</td>
+                <td id="col2" width="300px"></td>     
+       </tr>
+              <tr>
+                <td colspan=2>Previous Unit</td>
+                <td id="col3" colspan=2></td>     
+       </tr>
+              <tr>
+                <td colspan=2>Present Unit</td>
+                <td id="col4" colspan=2></td>     
+       </tr>
+                <tr>
+                <td colspan=2>Consume Unit</td>
+                <td id="col5" colspan=2></td>     
+       </tr>
+              <tr>
+                <td colspan=2>Rate</td>
+                <td id="col6" colspan=2></td>     
+       </tr>
+              <tr>
+                <td colspan=2>Amount</td>
+                <td id="col7" colspan=2></td>     
+       </tr>
+              <tr>
+                <td colspan=2>CGST</td>
+                <td id="col8" colspan=2></td>     
+       </tr>
+              <tr>
+                <td colspan=2>Electricity Duitee Charge</td>
+                <td id="col9"  colspan=2></td>     
+       </tr>
+              <tr>
+                <td colspan=2>Total Amount</td>
+                <td id="col10" colspan=2></td>     
+       </tr>
+              <tr>
+                <td colspan=2>Discount</td>
+                <td id="col11" colspan=2></td>     
+       </tr>
+              <tr>
+                <td colspan=2>Payble Amount`</td>
+                <td id="col12" colspan=2></td>     
+       </tr>
+          </table>
+</div>
+</body>
+</html>

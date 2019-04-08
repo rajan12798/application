@@ -1,0 +1,165 @@
+<html>
+<head>
+<title>Web Calculator</title>
+<script>
+    var s,val1,val2,result,i=0,v,arr=new Array(200),i=0,j,arr1=new Array(200);   
+      function value1( v )
+            {             
+                if(i==0 && (v=="+" || v=="-" || v=="*" || v=="/" || v=="="|| v==",") )
+                    {
+                                       alert("Please Enter Number first"); 
+                                  document.getElementById("screen").value="";
+                                 i=0;
+                                 v="_"; 
+                     }  
+                        if((arr[i-1]=="+" ||arr[i-1]=="-" ||arr[i-1]=="*" ||arr[i-1]=="/")&&( v=="+" || v=="-" || v=="*"  ||  v=="/" ) )
+                            {
+                                  alert("Please Enter Number first"); 
+                                  document.getElementById("screen").value="";
+                                 v="_";     
+                                i=0;    
+                            } 
+                               if(v=="sqr" || v=="pow")
+                                {
+                                   for(j=0;j<200;j++)
+                                   {
+                                          arr[j]=arr1[j];
+                                    }
+                                   i=0;
+                                  document.getElementById("screen").value="";
+                                 }                                  
+  
+                      if(v==1 || v==2 || v==3 || v==4 || v==5 || v==6 || v==7 || v==8 || v==9 || v==0 || v=="+" || v=="-" || v=="*" || v=="/" || v=="pow" || v=="sqr"|| v=="," )
+                             {  
+                                 arr[i]=v;
+                                 i=i+1;
+                                s=document.getElementById("screen").value;
+                                document.getElementById("screen").value=s+v;  
+                         }
+
+                            if(v=="=")
+                         {
+                              
+                           result=calculate();
+                          document.getElementById("screen").value="";
+                           document.getElementById("screen").value=result;
+                        }
+                         if(v=="c")
+                          {
+                                 for(j=0;j<200;j++)
+                                   {
+                                          arr[j]=arr1[j];
+                                   }
+                             i=0;
+                            document.getElementById("screen").value="";  
+                          }
+           }
+     var p, j;
+      var p2;
+      function operation( p )
+       {  if(p=="sqr") 
+          {  
+             val2=Math.sqrt(val2);
+             return val2;
+          }
+        if(p=="," && arr[0]=="pow") 
+          { 
+             val2=Math.pow(val1,val2);
+             return val2;
+          }        
+          if(p=="+")
+           {
+
+               val1=val1+val2;
+           }
+          if(p=="-")
+           {
+             val1=val1-val2;
+           }
+          if(p=="*")
+           {
+               val1=val1*val2;
+            }
+          if(p=="/")
+          {
+             val1=val1/val2;
+          }
+          if(p=="pow")
+          {
+             return val2;
+          }
+           return val1;    
+    }
+      function calculate()
+        { var k=0,op1=0,op2=0;
+          val1=number( k );
+          for(k;k<=i;k++)
+          {
+                   if(arr[k]=="+" || arr[k]=="-" || arr[k]=="*" || arr[k]=="/" || arr[k]=="sqr" || arr[k]=="pow" || arr[k]==",")
+                        {      
+                         
+                                      op1=arr[k];  
+                                      k=k+1;
+                                    val2=number(k);
+                                    val1=operation(op1);
+                        }    
+        }
+       
+             return val1;
+    }
+      function number( j )
+        { 
+          var num=0;
+           for(j;j<=i;j++)
+             {    
+                     if(arr[j]=="+" || arr[j]=="-" || arr[j]=="*" || arr[j]=="/" || arr[j]=="sqr" || arr[j]==","||arr[i]=="pow")
+                        {           
+                            return num;
+                        } 
+                 if(arr[j]<=9){          
+                  num=(Number(num*10) + Number(arr[j]));
+                 }
+             }
+                                return num; 
+        }
+
+</script>
+</head>
+<body method="put">
+     <div style="disblay:block;margin-left:300px;margin-top:10px;width:700px;background:white;box-shadow:10px 10px 10px 10px grey;border-radius:10px;margin-bottom:20px;height:70px;font-size:40px;"><h2 align="center"> Calculator</h2></div>
+        <div style="width:405px;height:280px;background:white;margin-left:450px;margin-top:100px;border-radius:15px;box-shadow:10px 10px 10px 10px grey;">
+           <form style="margin-left:0px;">
+                 <input type"text" id="screen" style="font-size:30px;height:80px;margin-left:10px;px;margin-top:20px;border-color:black;margin-bottom:10px;border-radius:10px;text-align:right;" border=2 ></input> 
+
+                <table style="height:80px;margin-left:30px;">
+                          <tr>
+                              <td><input type="button" id="b1" onclick="value1(value )" value="1" style="font-size:30px;border-radius:10px;color:white;background:Teal;border:none;width:50px;"></input> </td>
+                              <td><input type="button" id="b2"  onclick="value1(value )" value="2" style="font-size:30px;border-radius:10px;color:white;background:Teal;border:none;width:50px;"></input></td>
+                              <td><input type="button" id="b3" onclick="value1(value )" value="3" style="font-size:30px;border-radius:10px;color:white;background:Teal;border:none;width:50px;"></input></td>
+                             <td><input type="button" id="b4" onclick="value1(value )" value="sqr" style="font-size:30px;border-radius:10px;color:white;background:Teal;border:none;width:100px;"></input></td> 
+                               <td><input type="button" id="b5" onclick="value1(value )" value="pow" style="font-size:23px;border-radius:10px;color:white;background:Teal;border:none;width:60px;height:40px;"></input></td>   
+                        </tr>
+                          <tr>
+                              <td><input type="button" id="b6" onclick="value1(value )"  value="4" style="font-size:30px;border-radius:10px;color:white;background:Teal;border:none;width:50px;"></input> </td>
+                              <td><input type="button" id="b7" onclick="value1(value )" value="5" style="font-size:30px;border-radius:10px;color:white;background:Teal;border:none;width:50px;"></input></td>
+                              <td><input type="button" id="b8" onclick="value1(value )" value="6" style="font-size:30px;border-radius:10px;color:white;background:Teal;border:none;width:50px;"></input></td>
+                              <td><input type="button" id="b9" onclick="value1(value )" value="*" style="font-size:30px;border-radius:10px;color:white;background:Teal;border:none;width:100px"></input></td> 
+                               <td><input type="button" id="b10"  onclick="value1(value )" value="/" style="font-size:30px;border-radius:10px;color:white;background:Teal;border:none;width:60px;"></input></td>   
+                        </tr>
+                          <tr>
+                              <td><input type="button" id="b11" onclick="value1(value )" value="7" style="font-size:30px;border-radius:10px;color:white;background:Teal;border:none;width:50px;"></input> </td>
+                              <td><input type="button" id="b12" onclick="value1(value )" value="8" style="font-size:30px;border-radius:10px;color:white;background:Teal;border:none;width:50px;"></input></td>
+                              <td><input type="button" id="b12"onclick="value1(value )"  value="9" style="font-size:30px;border-radius:10px;color:white;background:Teal;border:none;width:50px;"></input></td>
+                              <td  rowspan=2><input type="button" id="b13" onclick="value1(value )"  value="+" style="font-size:30px;border-radius:10px;color:white;background:Teal;border:none;width:50px;height:80px;margin-left:0px"></input><input type="button" id="b17" onclick="value1(value )"  value="-" style="font-size:30px;border-radius:10px;color:white;background:Teal;border:none;width:45px;height:80px;margin-left:5px"></input></td>   
+                              <td  rowspan=2><input type="button" id="b14" onclick="value1(value )" value="=" style="font-size:30px;border-radius:10px;color:white;background:Teal;border:none;width:60px;height:80px;margin-left:0px"></input></td>   
+                        </tr>
+                          <tr>
+                              <td><input type="button" id="b15" onclick="value1(value )"  value="0" style="font-size:30px;border-radius:10px;color:white;background:Teal;border:none;width:50px;"></input> </td>
+                               <td><input type="button" id="b18"  onclick="value1(value )" value="c" style="font-size:30px;border-radius:10px;color:white;background:Teal;border:none;width:50px;"></input></td>
+                                 <td><input type="button" id="b16"  onclick="value1(value )" value="," style="font-size:30px;border-radius:10px;color:white;background:Teal;border:none;width:50px;" method=get></input></td>
+                        </tr>
+               </table>
+            </form>
+     </div>
+</body>
+</html>
